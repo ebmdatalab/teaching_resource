@@ -19,10 +19,6 @@ import pandas as pd
 # Path to your local code via sys and os
 
 import os
-import sys
-module_path = os.path.abspath(os.path.join('..'))
-if module_path not in sys.path:
-    sys.path.append(module_path)
 
 # Then import either the functions (better) 
 

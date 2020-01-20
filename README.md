@@ -142,14 +142,7 @@ the Python is separated into a separate module, in `code/`, and
 imported from the notebook.
 
 This will require you to path to the right file from within your notebook. For this to work 
-you need to have an empty \_\_init\_\_.py within your code folder. You also need to use the `os` and `sys` modules. You must have this code at the top of your file:
-
-```python 
-import sys
-module_path = os.path.abspath(os.path.join('..'))
-if module_path not in sys.path:
-    sys.path.append(module_path)
-```
+you need to have an empty \_\_init\_\_.py within your code folder. 
 
 There are 2 ways of getting your code into your notebook. The best way is to add an import statement at the top of your notebook and import the functions individually. For example: 
 
