@@ -1,153 +1,221 @@
-# EBM DataLab's default notebook environment
+## EBM DataLab Teaching Resources
 
-![status](https://github.com/ebmdatalab/custom-docker/workflows/Notebook%20checks/badge.svg)
+### Table of contents
 
-This is a skeleton project for creating a reproducible, cross-platform
-analysis notebook, using Docker.  It also includes:
+#### Git and Github
 
-* configuration for `jupytext`, to support easier code review
-* cross-platform startup scripts
-* best practice folder structure and documentation
+We have the team github [here](https://github.com/ebmdatalab). 
 
-To get started, [create a new
-repository](https://github.com/organizations/ebmdatalab/repositories/new)
-using this repo as a template, and clone it to your local machine.
+##### Make a github account 
 
-Your new repo's name should end with `-notebook`, to make it clear what it
-is.
+Sign up at [github.com](https://github.com/). You will need to be added to the EBM Datalab or git repo you want to use by a member of our team. 
 
-Then:
+##### Install git 
 
-* replace this front matter with information about your project;
-   * you should probably keep the rest of the contents to help other users of this package
-   * you should also keep the status badge at the top, changing
-     `custom-docker` to the name of your repo
-   * also edit the URL of the "quick start" button and the "nbviewer"
-     link below to match the name of your new repo
-* refer to the "Developing notebooks" section if this is your first time
+For Macs: Go [here](https://git-scm.com/downloads) and follow the instructions. You will need to install Xcode Tools via the app store to get this to work.
 
-# Quick Start
+For Windows: Go [here](https://git-scm.com/downloads). 
 
-Notebooks live in the `notebooks/` folder (with an `ipynb`
-extension). You can most easily view them [on
-nbviewer](https://nbviewer.jupyter.org/github/ebmdatalab/seb-docker-test/tree/master/notebooks/),
-though looking at them in Github should also work.
+##### Clone a repository
 
-You can view *and interact* with any notebooks in the `notebooks/`
-folder by launching the notebook in the free online service,
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ebmdatalab/custom-docker/master).
+Go to the command line (Terminal on Mac, Powershell in Windows is best). You will now clone a repo onto your computer. This involves making a file using the command line. It is best to navigate to a place on your computer where you want this to be. Remember your basic command line commands:
 
-Any changes you make there won't be saved; to do development work,
-you'll need to set up a local jupyter server and git repository.
+```cd [directory-name]``` to change directory
 
-# How to cite
+```cd .. ``` to go up to a parent directory
 
-XXX
+```ls ``` list contents in your current directory
 
-# Developing notebooks
+```pwd ``` print your working directory
 
-There are two ways of getting started with a development environment:
-with Docker, or using Python virtual environments.
+```mkdir [new-directory-name] ``` to make a directory 
 
-Docker allows you to run identical software on all platforms. In
-Windows, in particular, there are challenges ensuring all python
-packages are exactly the same as those available on other platforms.
+Then we need to clone the repo into our current working directory. Do this command:
 
-## Docker enviroment
+```git clone [your.repo]```
 
-### Installation
+For example, if you wanted to clone this repo, you do:
 
-Follow installation instructions
-[here](https://docs.docker.com/install/). Docker Desktop is generally preferred over Docker Toolbox,if possible. If running on Windows, you
-may find it useful first to refer to our own installation notes
-[here](https://github.com/ebmdatalab/custom-docker/issues/4) which cover Desktop/Toolbox and other installation questions.
+```git clone https://github.com/CarolineMorton/educationresource.git```
 
-Windows users who log into an Active Directory domain (i.e. a network
-login) may find they lack permissions to start Docker correctly. If
-so, follow [these
-instructions](https://github.com/docker/for-win/issues/785#issuecomment-344805180).
+If you want to clone another repo, locate the green clone button on the front page of the repo and copy from here. It should always end in .git. 
 
-### Start notebook
+##### Make a branch 
 
-The first time you do this, it may take some time, as the (large) base
-Docker image must be downloaded. On Linux or OS X:
+All repos will have a master branch. It may also have some extra branches that people have used in the past. We want to avoid merging our work directly with the master branch incase it causes errors, therefore it is better to checkout a new branch. To do this:
 
-    ./run.sh
+```git checkout -b [branch-name]```
 
-On Windows, double-click `run.bat`.
+for example, we could do a branch called feature1
 
-This will start a Jupyter Lab server in a Docker container. You will
-be able to access this in your web browser at http://localhost:8888/.
-Changes made in the Docker container will appear in your own
-filesystem, and can be committed as usual.
+```git checkout -b feature1```
 
-## Running without Docker
+This means that we have created a new branch on our local machine called ```feature1```
 
-If you want to execute notebooks without Docker, set up a [virtual
-environment](https://docs.python.org/3/tutorial/venv.html) for the
-Python version in question (you can infer this from the first line of
-the `Dockerfile` in the root of this repo).
+##### Make change and commit 
 
-Next, install dependencies that are normally automatically included by
-Docker:
+We are then free to add, change or delete files as we see fit. To see any changes do:
 
-    pip install jupyter jupytext pip-tools
+```git status```
 
-...and install this notebook's dependencies:
+Once you are ready to send back to github and share more widely you will need to do 3 steps. 
 
-    pip install -r requirements.txt
+```git add . ``` - this adds any changes 
 
-Finally, run jupyter in the same way it's started in the Docker image:
+Then we can commit with a message. We have written some instructions on commit messages [here](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/edit#)
+in the git section. 
 
-    PYTHONPATH=$(pwd) jupyter notebook --config=config/jupyter_notebook_config.py
+```git commit -m "add your message here```
 
-## Folder layout
+You can choose to force users to write longer more detailed git commit messages. This helps with auditing and understanding how a
+code base is growing. You can see [here](https://thoughtbot.com/blog/better-commit-messages-with-a-gitmessage-template) how
+to set up a git commit template. An example is in this repo to give you a favour of how this works. 
 
-By convention, all Jupyter notebooks live in `notebooks/`.  When
-notebooks look like they will contain more than a few lines of Python,
-the Python is separated into a separate module, in `lib/`, and
+We can repeat add and commit if we are working on a project and want to store checkpoints. 
+
+Finally we push to a branch. 
+
+```git push origin [branch-name]```
+
+Sometimes this will result in a clash. This is usually because someone else has pushed to the branch in the time you 
+have been working on it. 
+
+If this is the case, you will need to ```git pull``` their work into your local machine, resolve all clashes, recommit and then push. 
+
+Git has a useful cheatsheet of commands [here](https://www.git-tower.com/blog/git-cheat-sheet/)
+
+##### Create a pull request
+
+It is good practice to get your code checked before you merge your branch with the master branch. To do this create a pull request. 
+
+If you log into your github account in the browser. You could now see a prompt for 'create pull request'. Click this and nominate a reviewer or reviewers. They will check it and merge into the master, make changes or comment on your code. 
+
+
+
+#### Repo Structure
+
+Each repo will have this basic folder structure. For more information, please see our [Open Analytics Manifesto](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/)
+
+```bash
+├── code
+│   └── custom_functions.py  
+├── config                    
+│   └── jupyter_notebook_config
+├── data
+├── notebooks
+├── tests
+├── .gitattributes
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── requirements.in
+├── requirements.txt
+├── run.bat
+├── run.sh
+└── run_tests.sh
+
+```
+
+##### Notebooks
+By convention, all Jupyter notebooks live in `notebooks/`.  Notebooks now run via JupyterLab and will appears to have a 
+slightly different structure, with a sidebar showing the directory tree on the left hand side. 
+
+See our [manifesto guidelines](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/) on notebooks best practice. 
+
+##### Code
+
+When notebooks look like they will contain more than a few lines of Python,
+the Python is separated into a separate module, in `code/`, and
 imported from the notebook.
 
-`config/` contains the configuration required to run the Notebook; you
-shouldn't have to touch this.
+This will require you to path to the right file from within your notebook. For this to work 
+you need to have an empty \_\_init\_\_.py within your code folder. There are 2 ways of getting your code into your notebook. The best way is to add an import statement at the top of your notebook and import the functions individually. For example: 
 
-## Testing
+```python
+from code.custom_functions import multiplier
+```
 
-At a minimum, we expect all notebooks must be runnable from start to
-finish, and that the output of code cells matches that saved in the
-notebook.  We assert this using the
-[nbval](https://github.com/computationalmodelling/nbval) pytest
-plugin, which we have set up as a Github Actions workflow (see the
-`.github/` folder). Any other pytest-style tests found are also run as
-part of this workflow.
+Alternatively you can import all contents of your file. 
 
-# Development best practices
+```python
+from code import custom_functions
+```
 
-## Using a specific base image
+See the example in this repo and work through the example in `notebooks/notebook_importing_code`
 
-The `Dockerfile` is a way of telling Docker what environment to start
-for you. The first line should be something like:
+##### Data
 
-    FROM ebmdatalab/datalab-jupyter:python3.8.1-d92ad681ed6b16c3c3e0dc5cc21517614bb45d5b
+Data, including raw and processed data, should be stored within the `data/` folder.  You can easily import data (such as CSV or JSON) from within your own directory; but this would mean that
+all data has to be kept within your notebooks folder. Paths can be created easily with 
+the `os` module. It is a good idea to make a variable called filename which contains the name of the data file you would like to path to:
 
-The part before the colon tells docker which "base image" to use (if
-you need to see it, the code for our base Docker image can be found
-[here](https://github.com/ebmdatalab/datalab-jupyter)).
+```python
+filename = "data_file.csv"
+```
 
-The part after the colon is a docker `tag`, and specifies which
-version of that image to use.
+We use two inbuilt functions of the `os` module to path to the right folder (a sister folder of notebooks called data) 
 
-Our tags are of the form `python<version>-<git-commit>`. The
-`<version>` is self-explanatory, and the thing you'll usually care
-about; `<git-commit>` is the specific commit used to build it. To
-ensure your environment is exactly reproducible, you should always use a specific commit.
+This command returns the current working directory:
+```python
+os.getcwd()
+```
 
-You can see all the available tags [here](
-https://hub.docker.com/repository/docker/ebmdatalab/datalab-jupyter/tags?page=1).
+This command allows you to go up a level to a higher directory: 
+```python
+os.path.dirname()
+```
 
+By combining them, you get to the parent directory of your current working directory. You can then add on the name of the folder `data`
+to path to the correct location of the data:
 
+```python
+path = os.path.dirname(os.getcwd()) + "/data/" + filename
+```
 
-## Installing new packages
+If you print path, you will now get, something like:
+
+```bash
+'/Users/carolinemorton/Documents/ebmdatalab/data/data_file.csv
+
+```
+
+You could choose to add 2 folders to the `data/` folder called `/raw_data` and `/processed_data` to make it easy to read. 
+
+See the example in this repo and work through the example in `notebooks/notebook_importing_data`
+
+##### Tests
+
+Tests live in `tests/` folder. Tests are run automatically with [pytest](https://docs.pytest.org/en/latest/). This library
+will find any python files called `test_*.py` and then find any functions called `test_*()`.   
+
+The standard format is that you have one test function for each function. There are number of ways of doing tests but probably
+the cleanest way is to reimplement your code in a new way and test the results. 
+
+See the example in this repo and work through the example in `tests/test_custom_functions`. The function is called 
+`test_sum_values()` and is reimplementation of a function called `sum_values()`. This was taken from [here](https://realpython.com/python-testing/#testing-your-code). 
+
+Any test function needs to `assert` its output is the same at the function output. See more about `assert` [here](https://www.w3schools.com/python/ref_keyword_assert.asp). 
+
+You then run the test from the command line:
+```bash
+python -m pytest
+```
+
+You should get something that looks like this:
+
+```bash
+Carolines-MacBook-Air-3:teaching_resource carolinemorton$ python -m pytest
+============================ test session starts =============================
+platform darwin -- Python 3.6.8, pytest-3.3.2, py-1.5.2, pluggy-0.6.0
+rootdir: /Users/carolinemorton/Documents/ebmdatalab/teaching_resource, inifile:
+collected 1 item                                                             
+
+tests/test_custom_functions.py .                                       [100%]
+
+========================== 1 passed in 0.02 seconds ==========================
+```
+
+### Installing new packages
 
 Best practice is to ensure all your python dependencies are pinned to
 specific versions. To ensure this, while still supporting upgrading
@@ -158,6 +226,8 @@ The workflow is:
 
 * When you want to install a new package, add it to `requirements.in`
 * Run `pip-compile` to generate a `requirements.txt` based on that file
+* Run `chmod 777 requirements.txt` . The newly generated requirements.txt has specific requirements which don't intergrate 
+well with Docker. We need to run this command to open all the requirements. For more info on this specific command see [here](https://www.dreamvps.com/wp-content/uploads/2018/03/output_1520884742.htm) 
 * Run `pip-sync` to ensure your installed packages exactly match those in `requirements.txt`
 * Commit both `requirements.in` and `requirements.txt` to your git repo
 
@@ -178,13 +248,3 @@ notebook).
 
 You can then run whatever shell commands you like, by typing them and
 hitting Shift + Enter to execute.
-
-
-## Jupytext and diffing
-
-The Jupyter Lab server is packaged with Jupytext, which automatically
-synchronises edits you make in a notebook with a pure-python version
-in a subfolder at `notebooks/diffable_python`. This skeleton is also
-set up with a `.gitattributes` file which means `ipynb` files are
-ignored in Github Pull Requests, making it easier to do code reviews
-against changes.

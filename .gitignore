@@ -110,3 +110,6 @@ venv.bak/
 
 # Emacs
 *~
+
+#pycharm 
+.idea
