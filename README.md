@@ -1,8 +1,21 @@
 ## EBM DataLab Teaching Resources
 
 ### Table of contents
+- [Git and Github](#git-and-github)
+    + [Make a github account](#make-a-github-account)
+    + [Install git](#install-git)
+    + [Clone a repository](#clone-a-repository)
+    + [Make a branch](#make-a-branch)
+    + [Make change and commit](#make-change-and-commit)
+    + [Create a pull request](#create-a-pull-request)
+- [Repo Structure](#repo-structure)
+  * [Notebooks](#notebooks)
+  * [Code](#code)
+  * [Data](#data)
+  * [Tests](#tests)
+- [Installing new packages](#installing-new-packages)
 
-#### Git and Github
+### Git and Github
 
 We have the team github [here](https://github.com/ebmdatalab). 
 
@@ -92,7 +105,7 @@ If you log into your github account in the browser. You could now see a prompt f
 
 
 
-#### Repo Structure
+### Repo Structure
 
 Each repo will have this basic folder structure. For more information, please see our [Open Analytics Manifesto](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/)
 
@@ -116,13 +129,13 @@ Each repo will have this basic folder structure. For more information, please se
 
 ```
 
-##### Notebooks
+#### Notebooks
 By convention, all Jupyter notebooks live in `notebooks/`.  Notebooks now run via JupyterLab and will appears to have a 
 slightly different structure, with a sidebar showing the directory tree on the left hand side. 
 
 See our [manifesto guidelines](https://docs.google.com/document/d/1LD5hVjFOWx1AptbXkdTS135ureLkxd8kCumgl8mxzaA/) on notebooks best practice. 
 
-##### Code
+#### Code
 
 When notebooks look like they will contain more than a few lines of Python,
 the Python is separated into a separate module, in `code/`, and
@@ -143,7 +156,7 @@ from code import custom_functions
 
 See the example in this repo and work through the example in `notebooks/notebook_importing_code`
 
-##### Data
+#### Data
 
 Data, including raw and processed data, should be stored within the `data/` folder.  You can easily import data (such as CSV or JSON) from within your own directory; but this would mean that
 all data has to be kept within your notebooks folder. Paths can be created easily with 
@@ -183,7 +196,7 @@ You could choose to add 2 folders to the `data/` folder called `/raw_data` and `
 
 See the example in this repo and work through the example in `notebooks/notebook_importing_data`
 
-##### Tests
+#### Tests
 
 Tests live in `tests/` folder. Tests are run automatically with [pytest](https://docs.pytest.org/en/latest/). This library
 will find any python files called `test_*.py` and then find any functions called `test_*()`.   
