@@ -16,10 +16,18 @@ def calbmi(height, weight):
         
     Returns:
         bmi (float): Rounded to 1 decimal point
+
+    Raises:
+    	ValueError: if height or weight unrealistic
         
-    """  
-    bmi = round(weight/(height**2), 1)
-    return bmi
+    """
+    if height < 1 or height > 2.2:
+    	raise ValueError("Height either <1 metre or >2.2 metres. Please check input")
+    elif weight < 35 or weight > 300:
+    	raise ValueError("Weight either <35kg or >300kgs. Please check input")
+    else:
+	    bmi = round(weight/(height**2), 1)
+	    return bmi
 
 def sum_values(number_list):
     '''take in 3 values and returns a sum of these values'''
