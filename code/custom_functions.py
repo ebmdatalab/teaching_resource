@@ -6,17 +6,18 @@ def multiplier(number1, number2):
     return round(result, 1)
 
 def calbmi(height, weight):
-    '''function that takes in height and weight and
+    """
+    Function that takes in height and weight and
     calculates a BMI to nearest 1 dp
     
     Args:
-        height (float): Height in inches
-        weight (float): Weight in inches
+        height (float): Height in metres
+        weight (float): Weight in kilos
         
     Returns:
         bmi (float): Rounded to 1 decimal point
         
-    '''   
+    """  
     bmi = round(weight/(height**2), 1)
     return bmi
 
